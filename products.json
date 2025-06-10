@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "name": "Product 1",
+        "description": "Description of Product 1",
+        "category": "sneakers",
+        "image": "images/product1.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Product 2",
+        "description": "Description of Product 2",
+        "category": "boots",
+        "image": "images/product2.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Product 3",
+        "description": "Description of Product 3",
+        "category": "sandals",
+        "image": "images/product3.jpg"
+    },
+    {
+        "id": 4,
+        "name": "Product 4",
+        "description": "Description of Product 4",
+        "category": "sneakers",
+        "image": "images/product4.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Product 5",
+        "description": "Description of Product 5",
+        "category": "boots",
+        "image": "images/product5.jpg"
+    },
+    {
+        "id": 6,
+        "name": "Product 6",
+        "description": "Description of Product 6",
+        "category": "sandals",
+        "image": "images/product6.jpg"
+    }
+]

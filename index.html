@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Product Gallery</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Product Gallery</h1>
+    <nav>
+      <ul>
+        <li><a href="#" class="filter" data-category="all">All</a></li>
+        <li><a href="#" class="filter" data-category="sneakers">Sneakers</a></li>
+        <li><a href="#" class="filter" data-category="boots">Boots</a></li>
+        <li><a href="#" class="filter" data-category="sandals">Sandals</a></li>
+      </ul>
+    </nav>
+    <input type="text" id="search" placeholder="Search products..." />
+  </header>
+
+ gallery">
+      <!-- Products will be loaded here via JavaScript -->
+    </section>
+  </main>
+
+  <script>
+    fetch('products.json')
+      .then(response => response.json())
+      .then(products => {
+        const gallery = document.getElementById('gallery');
+        const searchInput = document.getElementById('search');
+        let activeCategory = 'all';
+
+        function loadProducts(category, searchTerm) {
+          gallery.innerHTML = '';
+          const filtered = products.filter(p => {
+            const matchesCategory = category === 'all' || p.category === category;
+            const matchesSearch = p.name.toLowerCase().includes(searchTerm.toLowerCase());
+            return matchesCategory && matchesSearch;
+          });
+
+          filtered.forEach(product => {
+            const div = document.createElement('div');
+            div.classList.add('product');
+            div.innerHTML = `
+              <img src="${product.image}" alt="${product.name}">
+              <h2>${product.name}</h2>
+              <p>${product.description}</p>
+            `;
+            gallery.appendChild(div);
+          });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+          loadProducts(activeCategory, '');
+
+          document.querySelectorAll('.filter').forEach(btn => {
+            btn.addEventListener('click', e => {
+              e.preventDefault();
+              activeCategory = btn.dataset.category;
+              loadProducts(activeCategory, searchInput.value);
+            });
+          });
+
+          searchInput.addEventListener('input', () => {
+            loadProducts(activeCategory, searchInput.value);
+          });
+        });
+      });
+  </script>
+</body>
+</html>
